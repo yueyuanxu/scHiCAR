@@ -114,7 +114,7 @@ cooler: [install](https://cooler.readthedocs.io/en/latest/quickstart.html)
 chrom_size=The/PATH/of/chrom/sizes/file
 for j in {celltype1,celltype2,celltype3,...,celltypeN}
 do
-cat 4_chromatin_contact/05_filtered/*.dedup.pairs.head ${i}.contact.pairs|bgzip -c > ${j}.contact.pairs.gz
+cat 4_chromatin_contact/05_filtered/*.dedup.pairs.head ${j}.contact.pairs|bgzip -c > ${j}.contact.pairs.gz
 pairtools sort -o ${j}.sort.pairs.gz ${j}.contact.pairs.gz
 pairix -f ${j}.sort.pairs.gz
 cooler cload pairix --max-split 2 --nproc 12 ${chrom_size}:5000 ${j}.sort.pairs.gz ${j}.5000.cool

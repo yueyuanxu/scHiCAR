@@ -71,6 +71,7 @@ rna_filter <- AddMetaData(rna_filter, metadata = setNames(df2$DNAbarcode, rownam
 # 2. Pseudo-bulk processing
 
 #### 2.1 Generate pseudo-bulk ATAC fragment files and contact pair files for each cell type
+###### Before running the code below, make sure to extract DNA barcodes for each cell type from "example_metadata.txt" and save each as a single-column file (*.DNAbarcode.txt).
 ```
 for i in {celltype1,celltype2,celltype3,...,celltypeN}
 do

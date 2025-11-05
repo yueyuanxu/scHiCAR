@@ -28,6 +28,6 @@ def file2set(filename):
 with open(list_file, 'rt') as file1, open(set_file, 'rt') as file2, open(output_file, 'wt') as file3:
     set1 = file2set(file2)
 
-    output_lines = (line for line in file1 if line[0:28] in set1)
+    output_lines = (line for line in file1 if line[0:18] in set1)
 
     file3.writelines(output_lines)

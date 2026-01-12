@@ -131,8 +131,7 @@ The `03_filtered/*.filtered.tsv.gz` files can be used  for TSS enrichment score 
 library(ArchR)
 addArchRThreads(threads = 1)
 addArchRGenome("mm10")
-fragments <- reformatFragmentFiles("03_filtered/*.filtered.tsv.gz")
-createArrowFiles(inputFiles = "03_filtered/*.filtered-Reformat.tsv.gz", sampleNames = "example", minTSS = 1, minFrags = 1000, addTileMat = TRUE, addGeneScoreMat = TRUE) # Set a small cutoff for minTSS and minFrags if you just want to retain the same cells as in rna_filter@meta.data.
+createArrowFiles(inputFiles = "03_filtered/*.filtered.tsv.gz", sampleNames = "example", minTSS = 1, minFrags = 1000, addTileMat = TRUE, addGeneScoreMat = TRUE) # Set a small cutoff for minTSS and minFrags if you just want to retain the same cells as in rna_filter@meta.data.
 dna <- ArchRProject(ArrowFiles = "example.arrow",outputDirectory = "obj.name", copyArrows = TRUE)
 rna_metadata<-read.table("example_metadata.txt",header=T,sep='\t',row.names=1)
 dna_filter<-dna[paste("obj.name#",rna_metadata$DNAbarcode,sep=""), ] #filter cells based on the cell barcodes of rna_filter@meta.data

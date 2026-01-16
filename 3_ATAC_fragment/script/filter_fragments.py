@@ -43,4 +43,5 @@ with open(fragment, 'rt') as fragfile, open(output_file, 'wt') as outfile:
     for line in fragfile:
         parts = line.strip().split('\t')
         if len(parts) >= 4 and parts[3] in barcode_set:
-            outfile.write(line)
+            parts[4] = '1' # replace umi with '1'
+            outfile.write('\t'.join(parts) + '\n')

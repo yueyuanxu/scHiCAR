@@ -4,6 +4,7 @@ This step is based on the RNA object generated from the filtered expression matr
 
 #### 1.1 Load RNA expression matrix
 ```r
+# R
 library(Seurat)
 data<- Read10X(data.dir = "1_RNA_preprocess/GeneFull/filtered")
 rna<-CreateSeuratObject(counts = data, project = "example", min.cells = 3, min.features = 200)

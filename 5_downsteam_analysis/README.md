@@ -12,6 +12,7 @@ rna<-CreateSeuratObject(counts = data, project = "example", min.cells = 3, min.f
 
 #### 1.2 Extract RNA barcode and split into 3 DNA parts
 ```r
+# R
 df <- data.frame(RNAlibrary = rna$orig.ident)
 df$DNAbarcode1<-substr(rownames(df),1,6)
 df$DNAbarcode2<-substr(rownames(df),7,12)
@@ -20,6 +21,7 @@ df$DNAbarcode3<-substr(rownames(df),13,18)
 
 #### 1.3 Replace the first 6bp using predefined map
 ```r
+# R
 barcode_map <- c( #predefined 6-bp RNA–DNA barcode pairing scheme used during library preparation
   "TCATCC" = "TACCCG", #left represents RNA and right represents DNA
   "AGTCAA" = "GAGTTT",
@@ -39,6 +41,7 @@ df$DNAbarcode1 <- sapply(df$DNAbarcode1, function(barcode) {
 
 #### 1.4 Reverse complement the last 6bp
 ```r
+# R
 reverse_complement <- function(seq) {
   complement <- setNames(c("T", "G", "C", "A"), c("A", "C", "G", "T"))
   comp_seq <- unname(complement[unlist(strsplit(seq, ""))])
@@ -54,6 +57,7 @@ df$DNAbarcode3<-NULL
 
 #### 1.5 filter cells based on the high-quliaty barcode list generate from [3_ATAC_fragment](https://github.com/DiaoLab/scHiCAR/tree/dev/3_ATAC_fragment) and [4_chromatin_contact](https://github.com/DiaoLab/scHiCAR/tree/dev/4_chromatin_contact)
 ```r
+# R
 atac_cut_rank<-read.table("3_ATAC_fragment/02_fragment/*.barcode.cut_rank")$V1
 pairs_cut_rank<-read.table("4_chromatin_contact/03_dedup/*.barcode.cut_rank")$V1
 valid_DNA_barcodes <- intersect(atac_cut_rank, pairs_cut_rank)
@@ -63,6 +67,7 @@ df2 <- df[df$DNAbarcode %in% valid_DNA_barcodes, ]
 
 #### 1.6 Subset RNA object and add DNA barcode information to meta.data
 ```r
+# R
 rna_filter <- subset(rna, cells = rownames(df2))
 rna_filter <- AddMetaData(rna_filter, metadata = setNames(df2$DNAbarcode, rownames(df2)), col.name = "DNAbarcode")
 ```
@@ -74,6 +79,7 @@ rna_filter <- AddMetaData(rna_filter, metadata = setNames(df2$DNAbarcode, rownam
 #### 2.1 Generate pseudo-bulk ATAC fragment files and contact pair files for each cell type
 Before running the code below, make sure to extract DNA barcodes for each cell type from "example_metadata.txt" and save each as a single-column file (*.DNAbarcode.txt).
 ```bash
+# Bash
 for i in {celltype1,celltype2,celltype3,...,celltypeN}
 do
 python3 extract_ATAC_fragment.py -l 3_ATAC_fragment/03_filtered/*.filtered.tsv -s ${i}.DNAbarcode.txt -o ${i}.ATAC.fragment.tsv
@@ -84,6 +90,7 @@ done
 #### 2.2 Call open chromatin peaks for each cell types
 macs2: [install](https://github.com/macs3-project/MACS/wiki/Install-macs2)
 ```bash
+# Bash
 genome_size=mm # or hs
 for i in {celltype1,celltype2,celltype3,...,celltypeN}
 do
@@ -96,6 +103,7 @@ slopBed: [install](https://github.com/arq5x/bedtools2/releases/tag/v2.31.0)
 
 bedClip and bedGraphToBigWig: [install](https://github.com/ENCODE-DCC/kentUtils)
 ```bash
+# Bash
 chrom_size=The/PATH/of/chrom/sizes/file
 for i in {celltype1,celltype2,celltype3,...,celltypeN}
 do
@@ -113,6 +121,7 @@ done
 #### 2.4 Aggregate read pairs into contact matrix in the cooler format (5kb resolution)
 cooler: [install](https://cooler.readthedocs.io/en/latest/quickstart.html)
 ```bash
+# Bash
 chrom_size=The/PATH/of/chrom/sizes/file
 for j in {celltype1,celltype2,celltype3,...,celltypeN}
 do
@@ -129,6 +138,7 @@ The *.cool file can be used to call A/B compartment, TAD, and chromatin loops fo
 #### 3.1 single cell ATAC analysis
 The `03_filtered/*.filtered.tsv.gz` files can be used  for TSS enrichment score and gene score calculation, as well as cell clustering, using the [ArchR](https://www.archrproject.com/index.html) R package.
 ```r
+# R
 library(ArchR)
 addArchRThreads(threads = 1)
 addArchRGenome("mm10")
@@ -151,12 +161,14 @@ saveRDS(dna_filter,"dna_filter.rds")
 #### 3.2 single cell 3D genome analysis
 Generate a list of contact pair files, each representing a single cell in tab-delimited format:
 ```bash
+# Bash
 python3 extract_pairs.py -l 4_chromatin_contact/05_filtered/*.dedup.filtered.pairs -s all_valid_DNA_barcodes.txt -o all_valid_DNA_contact.pairs
 cut -d':' -f1,3 all_valid_DNA_contact.pairs | perl -p -e "s/://g" | cut -f1-5 > all_valid_DNA_contact.pairs.5columns
 python3 split_per_cell_pairs.py --input_file all_valid_DNA_contact.pairs.5columns --output_dir per_cell/
 ```
 The `per_cell` folder can be used for cell embedding and imputing single-cell chromatin contact maps with [Fast-Higashi and Higashi](https://github.com/ma-compbio/Higashi).
 ```python
+# Python
 ### Process the input data：
 from higashi.Higashi_wrapper import *
 config = ./higashi.JSON"

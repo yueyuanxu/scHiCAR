@@ -1,6 +1,6 @@
 # scHiCAR
 ## Pipelines for scHiCAR data processing
-![alt text](scHiCAR_process.png)
+![alt text](scHiCAR.png)
 
 ### Tools requirement
 

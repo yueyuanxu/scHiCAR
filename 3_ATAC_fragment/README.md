@@ -22,5 +22,6 @@ Before running Snakemake, please make sure all required R/Python packages used i
 
 `snakemake --latency-wait 60 -p -j 99 --cluster-config cluster.json --cluster "sbatch -p common -J {cluster.job} --mem={cluster.mem} -N 1 -n {threads} -o {cluster.out} -e {cluster.err} " &> log &`
 
+The `2_fragment/*.log` files summarize alignment statistics and serve as QC metrics. The `2_fragment/*.barcode.cut_rank` files contain retained cell barcodes (2nd column) and the number of fragments per barcode (1st column) after filtering.
 
 The output `03_filtered/*.filtered.tsv.gz` files can be used in standard scATAC-seq downstream analysis (such as with [ArchR](https://www.archrproject.com/articles/Articles/tutorial.html), starting with `createArrowFiles`).

@@ -27,4 +27,4 @@ Before running Snakemake, please make sure all required R/Python packages used i
 
 The output `04_summary/*.read.summary` files summarize contact statistics and serve as QC metrics.
 
-The `05_filtered/*.dedup.filtered.pairs.gz` files can be used in downstream pseudo-bulk or single-cell analysis.
+The output `05_filtered/*.dedup.filtered.pairs.gz` files can be used in downstream pseudo-bulk or single-cell analysis.

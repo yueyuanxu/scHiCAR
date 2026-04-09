@@ -24,6 +24,7 @@ Before running Snakemake, please make sure all required R/Python packages used i
 `snakemake --latency-wait 60 -p -j 99 --cluster-config cluster.json --cluster "sbatch -p common -J {cluster.job} --mem={cluster.mem} -N 1 -n {threads} -o {cluster.out} -e {cluster.err} " &> log &`
 
 
+
 The output `04_summary/*.read.summary` files summarize contact statistics and serve as QC metrics.
 
 The `05_filtered/*.dedup.filtered.pairs.gz` files can be used in downstream pseudo-bulk or single-cell analysis.

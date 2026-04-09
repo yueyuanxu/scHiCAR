@@ -1,6 +1,6 @@
 ### 1. Download all the files to your folder
 ```
-Your_folder
+chromatin_contact_folder
 ├── Snakefile
 ├── cluster.json
 ├── config.yaml

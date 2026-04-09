@@ -1,7 +1,7 @@
 ## Note: In the latest scHiCAR protocol, read 1 corresponds to the ATAC-seq fragment.
 ### 1. Download all the files to your folder
 ```
-Your_folder
+ATAC_fragment_folder
 ├── Snakefile
 ├── cluster.json
 ├── config.yaml #modify this file based on your file paths

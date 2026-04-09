@@ -1,6 +1,6 @@
 ### 1. Download all the files to your folder
 ```
-Your_folder
+DNA_preprocess_folder
 ├── ME_index
 ├── Snakefile
 ├── cluster.json

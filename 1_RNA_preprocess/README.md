@@ -53,3 +53,4 @@ STAR --runMode alignReads \
 --limitBAMsortRAM 200000000000 > log 2>&1 &
 ```
 The STAR output **GeneFull/filtered** folder can be used in standard scRNA-seq downstream analysis (such as cell clustering and annotation with [Seurat](https://satijalab.org/seurat/articles/pbmc3k_tutorial)).
+The **GeneFull/Summary.csv** file provides quality control (QC) metrics.

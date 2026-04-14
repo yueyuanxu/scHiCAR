@@ -66,7 +66,7 @@ The resulting files (`03/filtered/*.filtered.tsv.gz`) can be used in standard sc
 
 The resulting files (`05_filtered/*.dedup.filtered.pairs.gz`) can be used in downsteam pseudo-bulk or single-cell contact analysis.
 
-### 5. Downstream pseudo-bulk / single-cell analysis ([code](https://github.com/monnneee/scHiCAR/tree/dev/5_downsteam_analysis))
+### 5. Downstream pseudo-bulk / single-cell analysis ([code](https://github.com/monnneee/scHiCAR/tree/dev/5_downstream_analysis))
 
 ### Citation
 Wei, X., Xu, Y., Yang, D. et al. Trimodal single-cell profiling of transcriptome, epigenome and 3D genome in complex tissues with scHiCAR. *Nat Biotechnol* (2026). https://doi.org/10.1038/s41587-026-03013-7

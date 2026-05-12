@@ -53,11 +53,10 @@ def update_fastq(r1,r2,out_r1,out_r2, barcode_dic,white_list_barcode,log_file): 
         if cur_r1_name == "" : break
         cur_barcode = (cur_r1_read[0:18])  ## makesure the barcode length
 
-        #if   cur_barcode in white_list_barcode : ## only the whitelist or corrected barcode are remained
-        if  cur_barcode in white_list_barcode : ## only the whitelist 
-        #if  cur_barcode in barcode_dic or cur_barcode in white_list_barcode : ## only the whitelist or corrected barcode are remained
-        #    if cur_barcode in barcode_dic:
-        #        cur_barcode = barcode_dic[cur_barcode]
+        #if  cur_barcode in white_list_barcode : ## only the whitelist 
+        if  cur_barcode in barcode_dic or cur_barcode in white_list_barcode : ## only the whitelist or corrected barcode are remained
+            if cur_barcode in barcode_dic:
+                cur_barcode = barcode_dic[cur_barcode]
             
             cur_r1_name = (cur_barcode + cur_r1_name) ## 18bp cell barcode
             cur_r1_read = (cur_barcode + cur_r2_read[0:4] + cur_r2_read[-3] + cur_r1_read[18:]) ## 18bp cell barcode

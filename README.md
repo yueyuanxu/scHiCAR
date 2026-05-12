@@ -70,3 +70,6 @@ The resulting files (`05_filtered/*.dedup.filtered.pairs.gz`) can be used in dow
 
 ### Citation
 Wei, X., Xu, Y., Yang, D. et al. Trimodal single-cell profiling of transcriptome, epigenome and 3D genome in complex tissues with scHiCAR. *Nat Biotechnol* (2026). https://doi.org/10.1038/s41587-026-03013-7
+
+### Contributors
+This pipeline was contributed by [Yueyuan Xu](https://github.com/yueyuanxu), [Xiaolin Wei](https://github.com/wxl123wxl), and [Yu Xiang](https://github.com/yxian9?tab=repositories).

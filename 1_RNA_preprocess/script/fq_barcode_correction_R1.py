@@ -54,7 +54,7 @@ def update_fastq(r1,r2,out_r1,out_r2, barcode_dic,white_list_barcode,log_file): 
         cur_barcode = (cur_r1_read[0:18])  ## makesure the barcode length
 
         #if  cur_barcode in white_list_barcode : ## only the whitelist 
-        if  cur_barcode in barcode_dic or cur_barcode in white_list_barcode : ## only the whitelist or corrected barcode are remained
+        if  cur_barcode in barcode_dic or cur_barcode in white_list_barcode : ## whitelist or corrected barcode are remained
             if cur_barcode in barcode_dic:
                 cur_barcode = barcode_dic[cur_barcode]
             

@@ -5,7 +5,7 @@ chromatin_contact_folder
 ├── cluster.json
 ├── config.yaml
 ├── sample2json.py
-├── fq    # This folder contains preprocessed FASTQ files
+├── fq    # create symbolic links to the *_cutME_L001_R*_001.fastq.gz files from 2_DNA_preprocess/05_cutME_fq in this folder
 │   ├── DNA_example_cutME_L001_R1_001.fastq.gz
 │   └── DNA_example_cutME_L001_R2_001.fastq.gz
 └── script

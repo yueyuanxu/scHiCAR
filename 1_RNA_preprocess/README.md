@@ -6,7 +6,7 @@ RNA_preprocess_folder
 ├── cluster.json
 ├── sample2json.py
 ├── scHiCAR_RNA_18bp_barcode.txt.gz
-├── fq  # move your raw fastq files to this folder
+├── fq  # move or create symbolic links to your raw fastq files in this folder
 │   ├── RNA_example_R1_001.fastq.gz
 │   └── RNA_example_R2_001.fastq.gz
 └── script

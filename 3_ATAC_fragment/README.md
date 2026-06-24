@@ -6,7 +6,7 @@ ATAC_fragment_folder
 ├── cluster.json
 ├── config.yaml #modify this file based on your file paths
 ├── sample2json.py
-├── fq  # create symbolic links to the *_R1_001.fastq.gz files from 2_DNA_preprocess/05_cutME_fq in this folder
+├── fq  # create symbolic links to the *_cutME_L001_R1_001.fastq.gz files from 2_DNA_preprocess/05_cutME_fq in this folder
 │   ├── DNA_example_cutME_L001_R1_001.fastq.gz
 └── script
     ├── extract_barcode_based_on_knee.R

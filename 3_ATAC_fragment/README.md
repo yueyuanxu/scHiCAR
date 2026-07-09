@@ -22,4 +22,4 @@ Before running Snakemake, please make sure all required R/Python packages used i
 
 `snakemake --latency-wait 60 -p -j 99 --cluster-config cluster.json --cluster "sbatch -p common -J {cluster.job} --mem={cluster.mem} -N 1 -n {threads} -o {cluster.out} -e {cluster.err} " &> log &`
 
-The output `02_fragment/*.log` files summarize alignment statistics and serve as QC metrics.  The `03_filtered/*.filtered.tsv.gz` files can be used in standard scATAC-seq downstream analysis (such as with [ArchR](https://www.archrproject.com/articles/Articles/tutorial.html), starting with `createArrowFiles`).
+The output `02_fragment/*.log` files summarize alignment statistics and serve as QC metrics.  The `03_filtered/*.filtered.tsv.gz` files can be used in standard scATAC-seq downstream analysis (such as with [ArchR](https://www.archrproject.com/articles/Articles/tutorial.html)). Note: The fragment coordinates are not Tn5-offset corrected. Apply strand-specific offsets (start + 4 bp for the positive strand and end - 5 bp for the negative strand) if Tn5 insertion coordinates are needed.
